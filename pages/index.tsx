@@ -23,7 +23,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [agents, setAgents] = useState<any>([]);
   const [agentsCount, setAgentsCount] = useState(0);
-  const [previewImage, setPreviewImage] = useState("10.jpg");
+  const [previewImage, setPreviewImage] = useState("13.jpg");
   const [size, setSize] = useState("l");
   const [model, setModel] = useState(1);
   const router = useRouter();
@@ -70,7 +70,7 @@ export default function Home() {
         switch (model) {
           case 1:
             productModel = "1";
-            productColor = "green-light";
+            productColor = "gray";
             break;
           case 2:
             productModel = "1";
@@ -78,20 +78,16 @@ export default function Home() {
             break;
           case 3:
             productModel = "1";
-            productColor = "gray";
+            productColor = "blue";
             break;
           case 4:
             productModel = "1";
-            productColor = "blue";
-            break;
-          case 5:
-            productModel = "1";
-            productColor = "orange";
+            productColor = "black";
             break;
 
           default:
             productModel = "1";
-            productColor = "green-light";
+            productColor = "black";
             break;
         }
 
@@ -115,7 +111,7 @@ export default function Home() {
           phone: `${number}`,
           wilaya: province,
           commune: address,
-          product: `fluide`,
+          product: `ensemble-sergio-tachhini`,
           size,
           color: productColor,
           agent_id: agentId,
@@ -162,23 +158,20 @@ export default function Home() {
     console.log(newModel);
     switch (newModel) {
       case 1:
-        setPreviewImage("10.jpg");
+        setPreviewImage("01.jpg");
         break;
       case 2:
-        setPreviewImage("12.jpg");
+        setPreviewImage("03.jpg");
         break;
       case 3:
-        setPreviewImage("20.jpg");
+        setPreviewImage("09.jpg");
         break;
       case 4:
-        setPreviewImage("22.jpg");
-        break;
-      case 5:
-        setPreviewImage("28.jpg");
+        setPreviewImage("13.jpg");
         break;
 
       default:
-        setPreviewImage("12.jpg");
+        setPreviewImage("13.jpg");
         break;
     }
   };
@@ -215,7 +208,7 @@ export default function Home() {
         <main className="w-full  mt-20 px-6 bg-[#151515]">
           <div className="w-full pt-4 pb-8 text-center  z-10 mt-4">
             <h1 className="text-5xl mb-2 text-white">
-              تمتع بالأناقة والراحة مع آخر موديلات 2023
+              تمتع بالأناقة والراحة مع آخر موديلات 2024
             </h1>
             <h6 className="text-2xl text-white">
               {" "}
@@ -230,34 +223,33 @@ export default function Home() {
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
                 <div className="grid gap-2 grid-cols-5 mt-2">
-                  <button onClick={() => setPreviewImage("10.jpg")}>
-                    <Image src="/10.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("01.jpg")}>
+                    <Image src="/01.jpg" width={128} height={160} />
                   </button>
-                  <button onClick={() => setPreviewImage("12.jpg")}>
-                    <Image src="/12.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("03.jpg")}>
+                    <Image src="/03.jpg" width={128} height={160} />
                   </button>
-                  <button onClick={() => setPreviewImage("20.jpg")}>
-                    <Image src="/20.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("09.jpg")}>
+                    <Image src="/09.jpg" width={128} height={160} />
                   </button>
-                  <button onClick={() => setPreviewImage("22.jpg")}>
-                    <Image src="/22.jpg" width={128} height={160} />
-                  </button>
-                  <button onClick={() => setPreviewImage("28.jpg")}>
-                    <Image src="/28.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("13.jpg")}>
+                    <Image src="/13.jpg" width={128} height={160} />
                   </button>
                 </div>
               </div>
               <div>
-                <img src="/25.jpg" className="my-3" />
-                <img src="/26.jpg" className="my-3" />
-                <img src="/27.jpg" className="my-3" />
-                <img src="/17.jpg" className="my-3" />
-                <img src="/18.jpg" className="my-3" />
-                <img src="/19.jpg" className="my-3" />
-
+                <img src="/01.jpg" className="my-3" />
+                <img src="/02.jpg" className="my-3" />
+                <img src="/03.jpg" className="my-3" />
+                <img src="/04.jpg" className="my-3" />
+                <img src="/05.jpg" className="my-3" />
+                <img src="/06.jpg" className="my-3" />
+                <img src="/07.jpg" className="my-3" />
+                <img src="/08.jpg" className="my-3" />
+                <img src="/09.jpg" className="my-3" />
                 <img src="/11.jpg" className="my-3" />
+                <img src="/12.jpg" className="my-3" />
                 <img src="/13.jpg" className="my-3" />
-                <img src="/14.jpg" className="my-3" />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
@@ -291,20 +283,17 @@ export default function Home() {
                 </div>
                 <div className="grid gap-2 grid-cols-5 mt-2">
                   <button onClick={() => handleUpdateModel(1)}>
-                    <Image src="/10.jpg" width={128} height={160} />
+                    <Image src="/01.jpg" width={128} height={160} />
                   </button>
                   <button onClick={() => handleUpdateModel(2)}>
-                    <Image src="/12.jpg" width={128} height={160} />
+                    <Image src="/03.jpg" width={128} height={160} />
                   </button>
 
                   <button onClick={() => handleUpdateModel(3)}>
-                    <Image src="/20.jpg" width={128} height={160} />
+                    <Image src="/09.jpg" width={128} height={160} />
                   </button>
                   <button onClick={() => handleUpdateModel(4)}>
-                    <Image src="/22.jpg" width={128} height={160} />
-                  </button>
-                  <button onClick={() => handleUpdateModel(5)}>
-                    <Image src="/28.jpg" width={128} height={160} />
+                    <Image src="/13.jpg" width={128} height={160} />
                   </button>
                 </div>
               </div>
@@ -348,7 +337,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/10.jpg"
+                            src="/01.jpg"
                             className="rounded-lg"
                             width={64}
                             height={64}
@@ -364,7 +353,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/12.jpg"
+                            src="/03.jpg"
                             width={64}
                             height={64}
                             alt=""
@@ -380,7 +369,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/20.jpg"
+                            src="/09.jpg"
                             width={64}
                             height={64}
                             alt=""
@@ -396,23 +385,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/22.jpg"
-                            width={64}
-                            height={64}
-                            alt=""
-                            className="rounded-lg"
-                          />
-                        </div>
-                        <div
-                          onClick={() => handleUpdateModel(5)}
-                          className={`flex cursor-pointer  p-1 border-2  hover:border-orange-500 w-16 h-16 rounded-lg ${
-                            model === 5
-                              ? "border-orange-500"
-                              : "border-gray-700"
-                          }`}
-                        >
-                          <Image
-                            src="/28.jpg"
+                            src="/13.jpg"
                             width={64}
                             height={64}
                             alt=""
@@ -426,6 +399,16 @@ export default function Home() {
                         <span className="label-text  text-white">المقاس</span>
                       </label>
                       <div className="grid grid-cols-6 gap-2 mt-2">
+                        <div
+                          onClick={() => setSize("s")}
+                          className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
+                            size === "s"
+                              ? "border-orange-500"
+                              : "border-gray-700"
+                          }`}
+                        >
+                          S
+                        </div>
                         <div
                           onClick={() => setSize("m")}
                           className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
@@ -466,16 +449,6 @@ export default function Home() {
                         >
                           XXL
                         </div>
-                        <div
-                          onClick={() => setSize("3xl")}
-                          className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
-                            size === "3xl"
-                              ? "border-orange-500"
-                              : "border-gray-700"
-                          }`}
-                        >
-                          3XL
-                        </div>
                       </div>
                     </div>
                     <div>
@@ -491,7 +464,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          1 Ensemble (5800 DA)
+                          1 Ensemble (6800 DA)
                         </div>
                         <div
                           onClick={() => setOffer(2)}
@@ -501,7 +474,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          2 Ensembles (9800 DA)
+                          2 Ensembles (11900 DA)
                         </div>
                       </div>
                     </div>
@@ -588,7 +561,7 @@ export default function Home() {
                         </p> */}
                         <p className="sm:flex block text-center mt-12 justify-center">
                           <span className="text-5xl text-orange-500 font-bold  block sm:inline">
-                            {offer === 1 ? "5800" : "9800"} DA
+                            {offer === 1 ? "6800" : "11900"} DA
                           </span>
                           {/* <span className=" text-white text-lg line-through block sm:inline">
                             {offer === 1 ? } DA
@@ -653,16 +626,18 @@ export default function Home() {
                 allowFullScreen
               ></iframe> */}
               <div className="text-right mt-0">
-                <img src="/25.jpg" className="my-3" />
-                <img src="/26.jpg" className="my-3" />
-                <img src="/27.jpg" className="my-3" />
-                <img src="/17.jpg" className="my-3" />
-                <img src="/18.jpg" className="my-3" />
-                <img src="/19.jpg" className="my-3" />
-
+                <img src="/02.jpg" className="my-3" />
+                <img src="/05.jpg" className="my-3" />
+                <img src="/08.jpg" className="my-3" />
+                <img src="/12.jpg" className="my-3" />
+                <img src="/06.jpg" className="my-3" />
+                <img src="/03.jpg" className="my-3" />
                 <img src="/11.jpg" className="my-3" />
+                <img src="/04.jpg" className="my-3" />
+                <img src="/07.jpg" className="my-3" />
+                <img src="/09.jpg" className="my-3" />
+                <img src="/01.jpg" className="my-3" />
                 <img src="/13.jpg" className="my-3" />
-                <img src="/14.jpg" className="my-3" />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
