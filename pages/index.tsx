@@ -10,6 +10,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import zIndex from "@mui/material/styles/zIndex";
 import supabase from "../supabase-config";
 
+import Countdown from "react-countdown/dist/index";
+
 export default function Home() {
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
@@ -25,9 +27,56 @@ export default function Home() {
   const [agentsCount, setAgentsCount] = useState(0);
   const [previewImage, setPreviewImage] = useState("13.jpg");
   const [size, setSize] = useState("l");
-  const [model, setModel] = useState(1);
+  const [model, setModel] = useState(4);
   const router = useRouter();
-
+  // Renderer callback with condition
+  const Completionist = () => <span>You are good to go!</span>;
+  const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
+    if (completed) {
+      // Render a completed state
+      return <Completionist />;
+    } else {
+      // Render a countdown
+      return (
+        <div className="w-full flex justify-center">
+          <span className="flex mt-4">
+            <span>
+              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md w-16 flex justify-center items-center bg-red-600 text-white text-5xl">
+                {days}
+              </span>
+              <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
+                أيام
+              </span>
+            </span>
+            <span>
+              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md w-16 flex justify-center items-center bg-red-600 text-white text-5xl">
+                {hours}
+              </span>
+              <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
+                ساعة
+              </span>
+            </span>
+            <span>
+              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md w-16 flex justify-center items-center bg-red-600 text-white text-5xl">
+                {minutes}
+              </span>
+              <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
+                دقيقة
+              </span>
+            </span>
+            <span>
+              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md w-16 flex justify-center items-center bg-red-600 text-white text-5xl">
+                {seconds}
+              </span>
+              <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
+                ثانية
+              </span>
+            </span>
+          </span>
+        </div>
+      );
+    }
+  };
   useEffect(() => {
     const fetchAgents = async () => {
       try {
@@ -59,12 +108,12 @@ export default function Home() {
       try {
         setIsLoading(true);
         let agentId;
-        if (agentsCount !== 0) {
+        /*if (agentsCount !== 0) {
           agentId = agents[Math.floor(Math.random() * agentsCount)].id;
         } else {
           agentId = 23;
-        }
-        // agentId = 23;
+        }*/
+        agentId = 17;
         let productModel;
         let productColor;
         switch (model) {
@@ -111,7 +160,7 @@ export default function Home() {
           phone: `${number}`,
           wilaya: province,
           commune: address,
-          product: `ensemble-sergio-tachhini`,
+          product: `ensemble_`,
           size,
           color: productColor,
           agent_id: agentId,
@@ -185,7 +234,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="facebook-domain-verification"
-          content="tymt6ktp9zw6pitsh6tylaw4fi3gns"
+          content="audbr9k9bo6t7he88rtn1s2zmvd5bc"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
@@ -223,9 +272,9 @@ export default function Home() {
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
                 <div className="grid gap-2 grid-cols-5 mt-2">
-                  <button onClick={() => setPreviewImage("01.jpg")}>
+                  {/* <button onClick={() => setPreviewImage("01.jpg")}>
                     <Image src="/01.jpg" width={128} height={160} />
-                  </button>
+                  </button>*/}
                   <button onClick={() => setPreviewImage("03.jpg")}>
                     <Image src="/03.jpg" width={128} height={160} />
                   </button>
@@ -238,6 +287,8 @@ export default function Home() {
                 </div>
               </div>
               <div>
+                <img src="/12.jpg" className="my-3" />
+                <img src="/13.jpg" className="my-3" />
                 <img src="/01.jpg" className="my-3" />
                 <img src="/02.jpg" className="my-3" />
                 <img src="/03.jpg" className="my-3" />
@@ -248,8 +299,6 @@ export default function Home() {
                 <img src="/08.jpg" className="my-3" />
                 <img src="/09.jpg" className="my-3" />
                 <img src="/11.jpg" className="my-3" />
-                <img src="/12.jpg" className="my-3" />
-                <img src="/13.jpg" className="my-3" />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
@@ -282,9 +331,9 @@ export default function Home() {
                   <img src={previewImage} alt="" className="" />
                 </div>
                 <div className="grid gap-2 grid-cols-5 mt-2">
-                  <button onClick={() => handleUpdateModel(1)}>
+                  {/* <button onClick={() => handleUpdateModel(1)}>
                     <Image src="/01.jpg" width={128} height={160} />
-                  </button>
+                  </button>*/}
                   <button onClick={() => handleUpdateModel(2)}>
                     <Image src="/03.jpg" width={128} height={160} />
                   </button>
@@ -315,9 +364,17 @@ export default function Home() {
               >
                 <h1 className="text-3xl  font-bold text-center text-white">
                   {/* <span className="text-orange-500">(30% تخفيض)</span> */}
-                  <br /> أطلب الآن واستفد من العرض{" "}
+                  <br /> أطلب الآن واستفد من تخفيض 35 بالمئة مع توصيل مجاني{" "}
                 </h1>
-
+                <div className="  my-4 py-4 rounded-lg bg-white/5">
+                  <h1 className="text-2xl text-orange-500 text-center">
+                    العرض ينتهي خلال
+                  </h1>
+                  <Countdown
+                    date={new Date("2023-11-25T00:00:00")}
+                    renderer={renderer}
+                  />
+                </div>
                 <form action="#" method="post">
                   <div className="p-4 border border-orange-600 rounded-lg mt-6">
                     <h3 className="text-lg mt-4 text-center text-white">
@@ -328,7 +385,7 @@ export default function Home() {
                         <span className="label-text text-white ">اللون</span>
                       </label>
                       <div className="justify-end gap-1 flex-wrap flex mt-2">
-                        <div
+                        {/* <div
                           onClick={() => handleUpdateModel(1)}
                           className={`flex cursor-pointer p-1 border-2 hover:border-orange-500 w-16 h-16 rounded-lg ${
                             model === 1
@@ -343,7 +400,7 @@ export default function Home() {
                             height={64}
                             alt=""
                           />
-                        </div>
+                        </div>*/}
                         <div
                           onClick={() => handleUpdateModel(2)}
                           className={`flex cursor-pointer  p-1 border-2  hover:border-orange-500 w-16 h-16 rounded-lg ${
@@ -399,7 +456,7 @@ export default function Home() {
                         <span className="label-text  text-white">المقاس</span>
                       </label>
                       <div className="grid grid-cols-6 gap-2 mt-2">
-                        <div
+                        {/* <div
                           onClick={() => setSize("s")}
                           className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
                             size === "s"
@@ -408,7 +465,7 @@ export default function Home() {
                           }`}
                         >
                           S
-                        </div>
+                        </div> */}
                         <div
                           onClick={() => setSize("m")}
                           className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
@@ -474,7 +531,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          2 Ensembles (11900 DA)
+                          2 Ensembles (10800 DA)
                         </div>
                       </div>
                     </div>
@@ -561,11 +618,12 @@ export default function Home() {
                         </p> */}
                         <p className="sm:flex block text-center mt-12 justify-center">
                           <span className="text-5xl text-orange-500 font-bold  block sm:inline">
-                            {offer === 1 ? "6800" : "11900"} DA
+                            {offer === 1 ? "5800" : "10800"} DA
                           </span>
-                          {/* <span className=" text-white text-lg line-through block sm:inline">
-                            {offer === 1 ? } DA
-                          </span> */}
+
+                          <span className=" text-white text-lg line-through block sm:inline">
+                            {offer === 1 ? "8800" : "17600"} DA
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -626,10 +684,11 @@ export default function Home() {
                 allowFullScreen
               ></iframe> */}
               <div className="text-right mt-0">
+                <img src="/12.jpg" className="my-3" />
+                <img src="/13.jpg" className="my-3" />
                 <img src="/02.jpg" className="my-3" />
                 <img src="/05.jpg" className="my-3" />
                 <img src="/08.jpg" className="my-3" />
-                <img src="/12.jpg" className="my-3" />
                 <img src="/06.jpg" className="my-3" />
                 <img src="/03.jpg" className="my-3" />
                 <img src="/11.jpg" className="my-3" />
@@ -637,7 +696,6 @@ export default function Home() {
                 <img src="/07.jpg" className="my-3" />
                 <img src="/09.jpg" className="my-3" />
                 <img src="/01.jpg" className="my-3" />
-                <img src="/13.jpg" className="my-3" />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>

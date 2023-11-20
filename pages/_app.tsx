@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         });
       });
   }, [router.events]);
+
   useEffect(() => {
     import("react-facebook-pixel")
       .then((x) => x.default)
