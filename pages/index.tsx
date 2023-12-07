@@ -25,9 +25,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [agents, setAgents] = useState<any>([]);
   const [agentsCount, setAgentsCount] = useState(0);
-  const [previewImage, setPreviewImage] = useState("13.jpg");
+  const [previewImage, setPreviewImage] = useState("noir-01.jpg");
   const [size, setSize] = useState("l");
-  const [model, setModel] = useState(4);
+  const [model, setModel] = useState(1);
   const router = useRouter();
   // Renderer callback with condition
   const Completionist = () => <span>You are good to go!</span>;
@@ -104,7 +104,13 @@ export default function Home() {
 
   const handleAddLead = async (e: any) => {
     e.preventDefault();
-    if (fullName !== "" && province !== "" && address !== "" && number !== "") {
+    if (
+      fullName !== "" &&
+      province !== "" &&
+      address !== "" &&
+      number !== "" &&
+      number !== null
+    ) {
       try {
         setIsLoading(true);
         let agentId;
@@ -119,24 +125,20 @@ export default function Home() {
         switch (model) {
           case 1:
             productModel = "1";
-            productColor = "gray";
+            productColor = "noir";
             break;
           case 2:
             productModel = "1";
-            productColor = "green";
+            productColor = "bleu";
             break;
           case 3:
             productModel = "1";
-            productColor = "blue";
-            break;
-          case 4:
-            productModel = "1";
-            productColor = "black";
+            productColor = "beige";
             break;
 
           default:
             productModel = "1";
-            productColor = "black";
+            productColor = "noir";
             break;
         }
 
@@ -204,25 +206,22 @@ export default function Home() {
   };
   const handleUpdateModel = (newModel: number) => {
     setModel(newModel);
-    console.log(newModel);
-    switch (newModel) {
-      case 1:
-        setPreviewImage("01.jpg");
-        break;
-      case 2:
-        setPreviewImage("03.jpg");
-        break;
-      case 3:
-        setPreviewImage("09.jpg");
-        break;
-      case 4:
-        setPreviewImage("13.jpg");
-        break;
+    // console.log(newModel);
+    // switch (newModel) {
+    //   case 1:
+    //     setPreviewImage("noir-01.jpg");
+    //     break;
+    //   case 2:
+    //     setPreviewImage("bleu-01.jpg");
+    //     break;
+    //   case 3:
+    //     setPreviewImage("beige-01.jpg");
+    //     break;
 
-      default:
-        setPreviewImage("13.jpg");
-        break;
-    }
+    //   default:
+    //     setPreviewImage("noir-01.jpg");
+    //     break;
+    // }
   };
 
   useEffect(() => console.log("updated", model), [model]);
@@ -255,14 +254,20 @@ export default function Home() {
           </div>
         </header>
         <main className="w-full  mt-20 px-6 bg-[#151515]">
-          <div className="w-full pt-4 pb-8 text-center  z-10 mt-4">
+          <div className="w-full pt-4 pb-4 text-center  z-10 mt-4">
             <h1 className="text-5xl mb-2 text-white">
               تمتع بالأناقة والراحة مع آخر موديلات 2024
             </h1>
-            <h6 className="text-2xl text-white">
+            <p className="text-2xl text-white">
               {" "}
               تصاميم فريدة بألوان متنوعة، مثالية لكل المناسبات
-            </h6>
+            </p>
+            <p className="text-xl  font-bold text-center  text-white bg-gray-800 rounded-xl py-2 mt-1">
+              {/* <span className="text-orange-500"> (35% تخفيض)</span> */}
+              عرض محدود استفد من{" "}
+              <span className="text-red-500">تخفيض (35%)</span> مع
+              <span className="text-green-400"> توصيل مجاني </span>
+            </p>
           </div>
 
           <div className="grid gap-12 md:grid-cols-2">
@@ -271,34 +276,146 @@ export default function Home() {
                 <div>
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
-                <div className="grid gap-2 grid-cols-5 mt-2">
-                  {/* <button onClick={() => setPreviewImage("01.jpg")}>
-                    <Image src="/01.jpg" width={128} height={160} />
-                  </button>*/}
-                  <button onClick={() => setPreviewImage("03.jpg")}>
-                    <Image src="/03.jpg" width={128} height={160} />
+                <div className="grid gap-2 grid-cols-6 mt-2">
+                  <button onClick={() => setPreviewImage("noir-01.jpg")}>
+                    <Image src="/noir-01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("09.jpg")}>
-                    <Image src="/09.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
+                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("13.jpg")}>
-                    <Image src="/13.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
+                    <Image
+                      src="/beige-01.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("noir-d01.jpg")}>
+                    <Image
+                      src="/noir-d01.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("noir-d02.jpg")}>
+                    <Image
+                      src="/noir-d02.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("bleu-d02.jpg")}>
+                    <Image
+                      src="/bleu-d02.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
                   </button>
                 </div>
               </div>
               <div>
-                <img src="/12.jpg" className="my-3" />
-                <img src="/13.jpg" className="my-3" />
-                <img src="/01.jpg" className="my-3" />
-                <img src="/02.jpg" className="my-3" />
-                <img src="/03.jpg" className="my-3" />
-                <img src="/04.jpg" className="my-3" />
-                <img src="/05.jpg" className="my-3" />
-                <img src="/06.jpg" className="my-3" />
-                <img src="/07.jpg" className="my-3" />
-                <img src="/08.jpg" className="my-3" />
-                <img src="/09.jpg" className="my-3" />
-                <img src="/11.jpg" className="my-3" />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/noir-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/noir-03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/noir-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/noir-d02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/bleu-01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/bleu-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/bleu-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/bleu-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/noir-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/beige-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/beige-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/beige-d02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/beige-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={704}
+                  width={528}
+                  src="/beige-03.jpg"
+                  className="my-3"
+                  alt=""
+                />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
@@ -330,19 +447,44 @@ export default function Home() {
                 <div>
                   <img src={previewImage} alt="" className="" />
                 </div>
-                <div className="grid gap-2 grid-cols-5 mt-2">
-                  {/* <button onClick={() => handleUpdateModel(1)}>
-                    <Image src="/01.jpg" width={128} height={160} />
-                  </button>*/}
-                  <button onClick={() => handleUpdateModel(2)}>
-                    <Image src="/03.jpg" width={128} height={160} />
+                <div className="grid gap-2 grid-cols-6 mt-2">
+                  <button onClick={() => setPreviewImage("noir-01.jpg")}>
+                    <Image src="/noir-01.jpg" width={128} height={160} alt="" />
                   </button>
-
-                  <button onClick={() => handleUpdateModel(3)}>
-                    <Image src="/09.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
+                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => handleUpdateModel(4)}>
-                    <Image src="/13.jpg" width={128} height={160} />
+                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
+                    <Image
+                      src="/beige-01.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("noir-d01.jpg")}>
+                    <Image
+                      src="/noir-d01.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("noir-d02.jpg")}>
+                    <Image
+                      src="/noir-d02.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
+                  </button>
+                  <button onClick={() => setPreviewImage("bleu-d02.jpg")}>
+                    <Image
+                      src="/bleu-d02.jpg"
+                      width={128}
+                      height={160}
+                      alt=""
+                    />
                   </button>
                 </div>
               </div>
@@ -363,17 +505,16 @@ export default function Home() {
                 id="form"
               >
                 <h1 className="text-3xl  font-bold text-center text-white">
-                  {/* <span className="text-orange-500">(30% تخفيض)</span> */}
-                  <br /> أطلب الآن واستفد من تخفيض 35 بالمئة مع توصيل مجاني{" "}
+                  {/* <span className="text-orange-500"> (35% تخفيض)</span> */}
+                  <br /> أطلب الآن واستفد من{" "}
+                  <span className="text-red-500">تخفيض (35%)</span> مع
+                  <span className="text-green-400"> توصيل مجاني </span>
                 </h1>
                 <div className="  my-4 py-4 rounded-lg bg-white/5">
                   <h1 className="text-2xl text-orange-500 text-center">
                     العرض ينتهي خلال
                   </h1>
-                  <Countdown
-                    date={new Date("2023-11-25T00:00:00")}
-                    renderer={renderer}
-                  />
+                  <Countdown date={Date.now() + 5300000} renderer={renderer} />
                 </div>
                 <form action="#" method="post">
                   <div className="p-4 border border-orange-600 rounded-lg mt-6">
@@ -385,7 +526,7 @@ export default function Home() {
                         <span className="label-text text-white ">اللون</span>
                       </label>
                       <div className="justify-end gap-1 flex-wrap flex mt-2">
-                        {/* <div
+                        <div
                           onClick={() => handleUpdateModel(1)}
                           className={`flex cursor-pointer p-1 border-2 hover:border-orange-500 w-16 h-16 rounded-lg ${
                             model === 1
@@ -394,13 +535,13 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/01.jpg"
+                            src="/noir-c1.jpg"
                             className="rounded-lg"
                             width={64}
                             height={64}
                             alt=""
                           />
-                        </div>*/}
+                        </div>
                         <div
                           onClick={() => handleUpdateModel(2)}
                           className={`flex cursor-pointer  p-1 border-2  hover:border-orange-500 w-16 h-16 rounded-lg ${
@@ -410,7 +551,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/03.jpg"
+                            src="/bleu-c1.jpg"
                             width={64}
                             height={64}
                             alt=""
@@ -426,23 +567,7 @@ export default function Home() {
                           }`}
                         >
                           <Image
-                            src="/09.jpg"
-                            width={64}
-                            height={64}
-                            alt=""
-                            className="rounded-lg"
-                          />
-                        </div>
-                        <div
-                          onClick={() => handleUpdateModel(4)}
-                          className={`flex cursor-pointer  p-1 border-2  hover:border-orange-500 w-16 h-16 rounded-lg ${
-                            model === 4
-                              ? "border-orange-500"
-                              : "border-gray-700"
-                          }`}
-                        >
-                          <Image
-                            src="/13.jpg"
+                            src="/beige-c1.jpg"
                             width={64}
                             height={64}
                             alt=""
@@ -456,16 +581,6 @@ export default function Home() {
                         <span className="label-text  text-white">المقاس</span>
                       </label>
                       <div className="grid grid-cols-6 gap-2 mt-2">
-                        {/* <div
-                          onClick={() => setSize("s")}
-                          className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
-                            size === "s"
-                              ? "border-orange-500"
-                              : "border-gray-700"
-                          }`}
-                        >
-                          S
-                        </div> */}
                         <div
                           onClick={() => setSize("m")}
                           className={`flex p-1 border-2 text-white cursor-pointer  hover:border-orange-500  text-center justify-center rounded-lg ${
@@ -521,7 +636,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          1 Ensemble (6800 DA)
+                          1 Ensemble (5800 DA)
                         </div>
                         <div
                           onClick={() => setOffer(2)}
@@ -684,18 +799,105 @@ export default function Home() {
                 allowFullScreen
               ></iframe> */}
               <div className="text-right mt-0">
-                <img src="/12.jpg" className="my-3" />
-                <img src="/13.jpg" className="my-3" />
-                <img src="/02.jpg" className="my-3" />
-                <img src="/05.jpg" className="my-3" />
-                <img src="/08.jpg" className="my-3" />
-                <img src="/06.jpg" className="my-3" />
-                <img src="/03.jpg" className="my-3" />
-                <img src="/11.jpg" className="my-3" />
-                <img src="/04.jpg" className="my-3" />
-                <img src="/07.jpg" className="my-3" />
-                <img src="/09.jpg" className="my-3" />
-                <img src="/01.jpg" className="my-3" />
+                <Image
+                  height={510}
+                  width={382}
+                  src="/noir-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={510}
+                  width={382}
+                  src="/noir-03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/noir-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={528}
+                  width={528}
+                  src="/noir-d02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/noir-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={510}
+                  width={382}
+                  src="/bleu-01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={510}
+                  width={382}
+                  src="/bleu-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/bleu-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/bleu-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+
+                <Image
+                  height={510}
+                  width={382}
+                  src="/beige-02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/beige-d01.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/beige-d02.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={382}
+                  width={382}
+                  src="/beige-d03.jpg"
+                  className="my-3"
+                  alt=""
+                />
+                <Image
+                  height={510}
+                  width={382}
+                  src="/beige-03.jpg"
+                  className="my-3"
+                  alt=""
+                />
               </div>
               <div className=" text-right mt-4">
                 <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
