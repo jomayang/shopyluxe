@@ -25,7 +25,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [agents, setAgents] = useState<any>([]);
   const [agentsCount, setAgentsCount] = useState(0);
-  const [previewImage, setPreviewImage] = useState("noir-01.jpg");
+  const [previewImage, setPreviewImage] = useState("noir-01.png");
   const [size, setSize] = useState("l");
   const [model, setModel] = useState(1);
   const router = useRouter();
@@ -162,7 +162,7 @@ export default function Home() {
           phone: `${number}`,
           wilaya: province,
           commune: address,
-          product: `ensemble_`,
+          product: `ensemble_n2_`,
           size,
           color: productColor,
           agent_id: agentId,
@@ -233,7 +233,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="facebook-domain-verification"
-          content="audbr9k9bo6t7he88rtn1s2zmvd5bc"
+          content="n1z5fa11a3bhhaaecpl8dcqamv7jjn"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
@@ -265,8 +265,7 @@ export default function Home() {
             <p className="text-xl  font-bold text-center  text-white bg-gray-800 rounded-xl py-2 mt-1">
               {/* <span className="text-orange-500"> (35% تخفيض)</span> */}
               عرض محدود استفد من{" "}
-              <span className="text-red-500">تخفيض (35%)</span> مع
-              <span className="text-green-400"> توصيل مجاني </span>
+              <span className="text-green-500">تخفيض (30%)</span>
             </p>
           </div>
 
@@ -277,39 +276,39 @@ export default function Home() {
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
                 <div className="grid gap-2 grid-cols-6 mt-2">
-                  <button onClick={() => setPreviewImage("noir-01.jpg")}>
-                    <Image src="/noir-01.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("noir-01.png")}>
+                    <Image src="/noir-01.png" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
-                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("bleu-03.png")}>
+                    <Image src="/bleu-03.png" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
+                  <button onClick={() => setPreviewImage("beige-01.png")}>
                     <Image
-                      src="/beige-01.jpg"
+                      src="/beige-01.png"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-d01.jpg")}>
+                  <button onClick={() => setPreviewImage("/noir-c06.jpg")}>
                     <Image
-                      src="/noir-d01.jpg"
+                      src="/noir-c06.jpg"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-d02.jpg")}>
+                  <button onClick={() => setPreviewImage("/noir-c05.jpg")}>
                     <Image
-                      src="/noir-d02.jpg"
+                      src="/noir-c05.jpg"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-d02.jpg")}>
+                  <button onClick={() => setPreviewImage("/noir-d04.jpg")}>
                     <Image
-                      src="/bleu-d02.jpg"
+                      src="/noir-d04.jpg"
                       width={128}
                       height={160}
                       alt=""
@@ -448,39 +447,39 @@ export default function Home() {
                   <img src={previewImage} alt="" className="" />
                 </div>
                 <div className="grid gap-2 grid-cols-6 mt-2">
-                  <button onClick={() => setPreviewImage("noir-01.jpg")}>
-                    <Image src="/noir-01.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("noir-01.png")}>
+                    <Image src="/noir-01.png" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
-                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("bleu-03.png")}>
+                    <Image src="/bleu-03.png" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
+                  <button onClick={() => setPreviewImage("beige-01.png")}>
                     <Image
-                      src="/beige-01.jpg"
+                      src="/beige-01.png"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-d01.jpg")}>
+                  <button onClick={() => setPreviewImage("noir-d04.jpg")}>
                     <Image
-                      src="/noir-d01.jpg"
+                      src="/noir-d04.jpg"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-d02.jpg")}>
+                  <button onClick={() => setPreviewImage("noir-c06.jpg")}>
                     <Image
-                      src="/noir-d02.jpg"
+                      src="/noir-c06.jpg"
                       width={128}
                       height={160}
                       alt=""
                     />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-d02.jpg")}>
+                  <button onClick={() => setPreviewImage("noir-c05.jpg")}>
                     <Image
-                      src="/bleu-d02.jpg"
+                      src="/noir-c05.jpg"
                       width={128}
                       height={160}
                       alt=""
@@ -507,8 +506,7 @@ export default function Home() {
                 <h1 className="text-3xl  font-bold text-center text-white">
                   {/* <span className="text-orange-500"> (35% تخفيض)</span> */}
                   <br /> أطلب الآن واستفد من{" "}
-                  <span className="text-red-500">تخفيض (35%)</span> مع
-                  <span className="text-green-400"> توصيل مجاني </span>
+                  <span className="text-green-500">تخفيض (30%)</span>
                 </h1>
                 <div className="  my-4 py-4 rounded-lg bg-white/5">
                   <h1 className="text-2xl text-orange-500 text-center">
@@ -636,7 +634,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          1 Ensemble (5800 DA)
+                          1 Ensemble (7500 DA)
                         </div>
                         <div
                           onClick={() => setOffer(2)}
@@ -646,7 +644,7 @@ export default function Home() {
                               : "border-gray-700"
                           }`}
                         >
-                          2 Ensembles (10800 DA)
+                          2 Ensembles (13600 DA)
                         </div>
                       </div>
                     </div>
@@ -733,11 +731,11 @@ export default function Home() {
                         </p> */}
                         <p className="sm:flex block text-center mt-12 justify-center">
                           <span className="text-5xl text-orange-500 font-bold  block sm:inline">
-                            {offer === 1 ? "5800" : "10800"} DA
+                            {offer === 1 ? "7500" : "13600"} DA
                           </span>
 
                           <span className=" text-white text-lg line-through block sm:inline">
-                            {offer === 1 ? "8800" : "17600"} DA
+                            {offer === 1 ? "10800" : "21600"} DA
                           </span>
                         </p>
                       </div>
