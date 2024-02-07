@@ -48,7 +48,7 @@ export default function Home() {
         <div className="w-full flex justify-center">
           <span className="flex mt-4">
             <span>
-              <span className="h-16 mr-1 rounded-tl-md text-white ounded-tr-md w-16 flex justify-center items-center bg-red-600  text-5xl">
+              <span className="h-16 mr-1 rounded-tl-md text-white rounded-tr-md w-16 flex justify-center items-center bg-amber-600  text-5xl">
                 {days}
               </span>
               <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
@@ -56,7 +56,7 @@ export default function Home() {
               </span>
             </span>
             <span>
-              <span className="h-16 mr-1 rounded-tl-md text-white rounded-tr-md w-16 flex justify-center items-center bg-red-600  text-5xl">
+              <span className="h-16 mr-1 rounded-tl-md text-white rounded-tr-md w-16 flex justify-center items-center bg-amber-600  text-5xl">
                 {hours}
               </span>
               <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
@@ -64,7 +64,7 @@ export default function Home() {
               </span>
             </span>
             <span>
-              <span className="h-16 mr-1 rounded-tl-md text-white rounded-tr-md w-16 flex justify-center items-center bg-red-600  text-5xl">
+              <span className="h-16 mr-1 rounded-tl-md text-white rounded-tr-md w-16 flex justify-center items-center bg-amber-600  text-5xl">
                 {minutes}
               </span>
               <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
@@ -72,7 +72,7 @@ export default function Home() {
               </span>
             </span>
             <span>
-              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md text-white w-16 flex justify-center items-center bg-red-600  text-5xl">
+              <span className="h-16 mr-1 rounded-tl-md rounded-tr-md text-white w-16 flex justify-center items-center bg-amber-600  text-5xl">
                 {seconds}
               </span>
               <span className="w-16 flex rounded-bl-md rounded-br-md justify-center bg-white">
@@ -309,7 +309,7 @@ export default function Home() {
             <div className=" mt-3">
               <a
                 href="#form"
-                className=" bg-amber-600 hover:bg-amber-500 text-white duration-150 ease-in-out  px-6 py-3 rounded-lg font-bold"
+                className=" bg-amber-500 hover:bg-amber-400 text-white duration-150 ease-in-out  px-6 py-3 rounded-lg font-bold"
               >
                 أطلب الآن
               </a>
@@ -319,17 +319,17 @@ export default function Home() {
         <main className="w-full  mt-20 px-6">
           <div className="w-full pt-4 pb-4 text-center  z-10 mt-4">
             <h1 className="text-5xl mb-2 ">
-              تمتع بالأناقة والراحة مع آخر موديلات 2024
+              ابدأ رحلة الأناقة الشخصية مع أحدث موديلات الربيع
             </h1>
             <p className="text-2xl ">
               {" "}
               تصاميم فريدة بألوان متنوعة، مثالية لكل المناسبات
             </p>
-            <p className="text-xl  font-bold text-center   bg-gray-100 rounded-xl py-2 mt-1">
-              {/* <span className="text-amber-500"> (35% تخفيض)</span> */}
+            {/* <p className="text-xl  font-bold text-center   bg-gray-100 rounded-xl py-2 mt-1">
+              
               عرض محدود استفد من{" "}
               <span className="text-green-500">تخفيض (36%)</span>
-            </p>
+            </p> */}
           </div>
 
           <div className="grid gap-12 md:grid-cols-2">
@@ -547,7 +547,7 @@ export default function Home() {
                   <>
                     <h1 className="text-3xl  font-bold text-center ">
                       <span className="text-amber-500">(35% تخفيض)</span>
-                      <br /> أطلب الآن واستفيدي من العرض{" "}
+                      <br /> أطلب الآن واستفد من العرض{" "}
                     </h1>
                     <div className="  my-4 py-4 rounded-lg bg-white/5">
                       <h1 className="text-2xl text-amber-500 text-center">
