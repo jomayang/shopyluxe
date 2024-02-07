@@ -89,9 +89,10 @@ export default function Home() {
     const handleBeforeUnload = async (event: any) => {
       try {
         if (!isSubmitted && number !== null) {
-          const agents_dict = [17, 23];
-          const agentId =
-            agents_dict[Math.floor(Math.random() * agents_dict.length)];
+          // const agents_dict = [17, 23];
+          // const agentId =
+          //   agents_dict[Math.floor(Math.random() * agents_dict.length)];
+          const agentId = 12;
           let productModel;
           let productColor;
           switch (model) {
@@ -186,10 +187,10 @@ export default function Home() {
         } else {
           agentId = 23;
         }*/
-        const agents_dict = [17, 23];
-        const agentId =
-          agents_dict[Math.floor(Math.random() * agents_dict.length)];
-
+        // const agents_dict = [17, 23];
+        // const agentId =
+        //   agents_dict[Math.floor(Math.random() * agents_dict.length)];
+        const agentId = 12;
         let productModel;
         let productColor;
         switch (model) {
@@ -296,7 +297,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="facebook-domain-verification"
-          content="ghd3ln2pwzoaoqlxi8i388ftlili68"
+          content="iquvzyp0swcobn7sloous5ul2t87mm"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
@@ -524,7 +525,7 @@ export default function Home() {
             </div>
 
             <div className="z-10">
-              <div className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 rounded-2xl">
+              <div className="bg-gradient-to-tr from-lime-500 via-orange-500  to-amber-500 p-1 rounded-2xl">
                 <div
                   className="bg-[#f5f5f5] rounded-2xl w-full  py-4 px-6 "
                   id="form"
