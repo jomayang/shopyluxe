@@ -524,331 +524,323 @@ export default function Home() {
             </div>
 
             <div className="z-10">
-              <div className="flex justify-between hidden">
-                <Image
-                  src="/arrowdown.png"
-                  width={72}
-                  height={72}
-                  alt=""
-                  className="-scale-x-100"
-                />
-                <Image src="/arrowdown.png" width={72} height={72} alt="" />
-              </div>
-              <div
-                className="bg-[#f5f5f5] rounded-2xl w-fullborder-2 py-4 px-6 border-gray-700"
-                id="form"
-              >
-                {isSubmitted ? (
-                  <p className=" text-center">
-                    شكرا جزيلا على ثقتكم سيتم الإتصال بكم في غضون 24 ساعة لتأكيد
-                    طلبكم فالرجاء إبقاء الهاتف مفتوح
-                  </p>
-                ) : (
-                  <>
-                    <h1 className="text-3xl  font-bold text-center ">
-                      <span className="text-amber-500">(35% تخفيض)</span>
-                      <br /> أطلب الآن واستفد من العرض{" "}
-                    </h1>
-                    <div className="  my-4 py-4 rounded-lg bg-white/5">
-                      <h1 className="text-2xl text-amber-500 text-center">
-                        العرض ينتهي خلال
+              <div className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 rounded-2xl">
+                <div
+                  className="bg-[#f5f5f5] rounded-2xl w-full  py-4 px-6 "
+                  id="form"
+                >
+                  {isSubmitted ? (
+                    <p className=" text-center">
+                      شكرا جزيلا على ثقتكم سيتم الإتصال بكم في غضون 24 ساعة
+                      لتأكيد طلبكم فالرجاء إبقاء الهاتف مفتوح
+                    </p>
+                  ) : (
+                    <>
+                      <h1 className="text-3xl  font-bold text-center ">
+                        <span className="text-amber-500">(35% تخفيض)</span>
+                        <br /> أطلب الآن واستفد من العرض{" "}
                       </h1>
-                      <Countdown
-                        date={Date.now() + 5300000}
-                        renderer={renderer}
-                      />
-                    </div>
-                    <form action="#" method="post">
-                      <div className="p-4 border border-amber-600 rounded-lg mt-6">
-                        <h3 className="text-lg mt-4 text-center ">
-                          قم بإختيار اللون و المقاس{" "}
+                      <div className="  my-4 py-4 rounded-lg bg-white/5">
+                        <h1 className="text-2xl text-amber-500 text-center">
+                          العرض ينتهي خلال
+                        </h1>
+                        <Countdown
+                          date={Date.now() + 5300000}
+                          renderer={renderer}
+                        />
+                      </div>
+                      <form action="#" method="post">
+                        <div className="p-4 border border-amber-600 rounded-lg mt-6">
+                          <h3 className="text-lg mt-4 text-center ">
+                            قم بإختيار اللون و المقاس{" "}
+                          </h3>
+                          <div>
+                            <label className="label w-full text-right block mt-3">
+                              <span className="label-text  ">اللون</span>
+                            </label>
+                            <div className="justify-end gap-1 flex-wrap flex mt-2">
+                              <div
+                                onClick={() => handleUpdateModel(1)}
+                                className={`flex cursor-pointer p-1 border-2 hover:border-amber-500 w-16 h-16 rounded-lg ${
+                                  model === 1
+                                    ? "border-amber-700"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                <Image
+                                  src="/noir.png"
+                                  className="rounded-lg"
+                                  width={64}
+                                  height={64}
+                                  alt=""
+                                />
+                              </div>
+                              <div
+                                onClick={() => handleUpdateModel(2)}
+                                className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
+                                  model === 2
+                                    ? "border-amber-700"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                <Image
+                                  src="/tabac.png"
+                                  width={64}
+                                  height={64}
+                                  alt=""
+                                  className="rounded-lg"
+                                />
+                              </div>
+                              <div
+                                onClick={() => handleUpdateModel(3)}
+                                className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
+                                  model === 3
+                                    ? "border-amber-700"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                <Image
+                                  src="/bleu.png"
+                                  width={64}
+                                  height={64}
+                                  alt=""
+                                  className="rounded-lg"
+                                />
+                              </div>
+                              <div
+                                onClick={() => handleUpdateModel(4)}
+                                className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
+                                  model === 4
+                                    ? "border-amber-700"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                <Image
+                                  src="/beige.png"
+                                  width={64}
+                                  height={64}
+                                  alt=""
+                                  className="rounded-lg"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <label className="label w-full text-right block mt-3">
+                              <span className="label-text  ">المقاس</span>
+                            </label>
+                            <div className="grid grid-cols-6 gap-2 mt-2">
+                              <div
+                                onClick={() => setSize("m")}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  size === "m"
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                M
+                              </div>
+                              <div
+                                onClick={() => setSize("l")}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  size === "l"
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                L
+                              </div>
+                              <div
+                                onClick={() => setSize("xl")}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  size === "xl"
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                XL
+                              </div>
+                              <div
+                                onClick={() => setSize("xxl")}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  size === "xxl"
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                XXL
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <label className="label w-full text-right block mt-3">
+                              <span className="label-text  ">العرض</span>
+                            </label>
+                            <div className="grid grid-rows-2 gap-2 mt-2">
+                              <div
+                                onClick={() => setOffer(1)}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  offer === 1
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                1 Ensemble (7500 DA)
+                              </div>
+                              <div
+                                onClick={() => setOffer(2)}
+                                className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
+                                  offer === 2
+                                    ? "border-amber-500"
+                                    : "border-gray-200"
+                                }`}
+                              >
+                                2 Ensembles (13900 DA)
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <h3 className="text-lg  text-center mt-4 ">
+                          الرجاء إدخال معلوماتك الشخصية و سوف نتصل بك للتأكيد{" "}
                         </h3>
                         <div>
                           <label className="label w-full text-right block mt-3">
-                            <span className="label-text  ">اللون</span>
+                            <span className="label-text  right-0 ">
+                              الإسم و اللقب
+                            </span>
                           </label>
-                          <div className="justify-end gap-1 flex-wrap flex mt-2">
-                            <div
-                              onClick={() => handleUpdateModel(1)}
-                              className={`flex cursor-pointer p-1 border-2 hover:border-amber-500 w-16 h-16 rounded-lg ${
-                                model === 1
-                                  ? "border-amber-700"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              <Image
-                                src="/noir.png"
-                                className="rounded-lg"
-                                width={64}
-                                height={64}
-                                alt=""
-                              />
-                            </div>
-                            <div
-                              onClick={() => handleUpdateModel(2)}
-                              className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
-                                model === 2
-                                  ? "border-amber-700"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              <Image
-                                src="/tabac.png"
-                                width={64}
-                                height={64}
-                                alt=""
-                                className="rounded-lg"
-                              />
-                            </div>
-                            <div
-                              onClick={() => handleUpdateModel(3)}
-                              className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
-                                model === 3
-                                  ? "border-amber-700"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              <Image
-                                src="/bleu.png"
-                                width={64}
-                                height={64}
-                                alt=""
-                                className="rounded-lg"
-                              />
-                            </div>
-                            <div
-                              onClick={() => handleUpdateModel(4)}
-                              className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
-                                model === 4
-                                  ? "border-amber-700"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              <Image
-                                src="/beige.png"
-                                width={64}
-                                height={64}
-                                alt=""
-                                className="rounded-lg"
-                              />
-                            </div>
-                          </div>
+                          <input
+                            type="text"
+                            className="p-3 mt-2 bg-white rounded-md w-full text-right"
+                            placeholder="الإسم و اللقب"
+                            value={fullName}
+                            onBlur={() => handleSetError("name")}
+                            required
+                            onChange={(e) => setFullName(e.target.value)}
+                          />
+                          {nameErr && (
+                            <p className="text-right text-amber-600 ">
+                              ادخل الاسم
+                            </p>
+                          )}
                         </div>
                         <div>
                           <label className="label w-full text-right block mt-3">
-                            <span className="label-text  ">المقاس</span>
+                            <span className="label-text  ">رقم الهاتف</span>
                           </label>
-                          <div className="grid grid-cols-6 gap-2 mt-2">
-                            <div
-                              onClick={() => setSize("m")}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                size === "m"
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              M
-                            </div>
-                            <div
-                              onClick={() => setSize("l")}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                size === "l"
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              L
-                            </div>
-                            <div
-                              onClick={() => setSize("xl")}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                size === "xl"
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              XL
-                            </div>
-                            <div
-                              onClick={() => setSize("xxl")}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                size === "xxl"
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              XXL
-                            </div>
-                          </div>
+                          <input
+                            type="number"
+                            className="p-3 mt-2 bg-white rounded-md w-full text-right"
+                            placeholder="رقم الهاتف"
+                            value={number}
+                            onBlur={() => handleSetError("number")}
+                            required
+                            onChange={(e) => setNumber(e.target.value)}
+                          />
+                          {numberErr && (
+                            <p className="text-right text-amber-600">
+                              الرجاء إدخال رقم الهاتف
+                            </p>
+                          )}
                         </div>
                         <div>
                           <label className="label w-full text-right block mt-3">
-                            <span className="label-text  ">العرض</span>
+                            <span className="label-text  ">الولاية</span>
                           </label>
-                          <div className="grid grid-rows-2 gap-2 mt-2">
-                            <div
-                              onClick={() => setOffer(1)}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                offer === 1
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              1 Ensemble (7500 DA)
-                            </div>
-                            <div
-                              onClick={() => setOffer(2)}
-                              className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
-                                offer === 2
-                                  ? "border-amber-500"
-                                  : "border-gray-200"
-                              }`}
-                            >
-                              2 Ensembles (13900 DA)
-                            </div>
-                          </div>
+                          <input
+                            type="text"
+                            className="p-3 mt-2 bg-white rounded-md w-full text-right"
+                            placeholder="الولاية"
+                            value={province}
+                            onBlur={() => handleSetError("province")}
+                            required
+                            onChange={(e) => setProvince(e.target.value)}
+                          />
+                          {provinceErr && (
+                            <p className="text-right text-amber-600">
+                              الرجاء إدخال الولاية
+                            </p>
+                          )}
                         </div>
-                      </div>
-
-                      <h3 className="text-lg  text-center mt-4 ">
-                        الرجاء إدخال معلوماتك الشخصية و سوف نتصل بك للتأكيد{" "}
-                      </h3>
-                      <div>
-                        <label className="label w-full text-right block mt-3">
-                          <span className="label-text  right-0 ">
-                            الإسم و اللقب
-                          </span>
-                        </label>
-                        <input
-                          type="text"
-                          className="p-3 mt-2 bg-white rounded-md w-full text-right"
-                          placeholder="الإسم و اللقب"
-                          value={fullName}
-                          onBlur={() => handleSetError("name")}
-                          required
-                          onChange={(e) => setFullName(e.target.value)}
-                        />
-                        {nameErr && (
-                          <p className="text-right text-amber-600 ">
-                            ادخل الاسم
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label className="label w-full text-right block mt-3">
-                          <span className="label-text  ">رقم الهاتف</span>
-                        </label>
-                        <input
-                          type="number"
-                          className="p-3 mt-2 bg-white rounded-md w-full text-right"
-                          placeholder="رقم الهاتف"
-                          value={number}
-                          onBlur={() => handleSetError("number")}
-                          required
-                          onChange={(e) => setNumber(e.target.value)}
-                        />
-                        {numberErr && (
-                          <p className="text-right text-amber-600">
-                            الرجاء إدخال رقم الهاتف
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label className="label w-full text-right block mt-3">
-                          <span className="label-text  ">الولاية</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="p-3 mt-2 bg-white rounded-md w-full text-right"
-                          placeholder="الولاية"
-                          value={province}
-                          onBlur={() => handleSetError("province")}
-                          required
-                          onChange={(e) => setProvince(e.target.value)}
-                        />
-                        {provinceErr && (
-                          <p className="text-right text-amber-600">
-                            الرجاء إدخال الولاية
-                          </p>
-                        )}
-                      </div>
-                      <div>
-                        <label className="label w-full text-right block mt-3">
-                          <span className="label-text  ">البلدية</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="p-3 mt-2 bg-white rounded-md w-full text-right"
-                          placeholder="البلدية"
-                          value={address}
-                          onChange={(e) => setAddress(e.target.value)}
-                        />
-                      </div>
-
-                      <div>
                         <div>
-                          <div className="">
-                            {/* <p className=" mr-3 my-6 text-lg text-center ">
+                          <label className="label w-full text-right block mt-3">
+                            <span className="label-text  ">البلدية</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="p-3 mt-2 bg-white rounded-md w-full text-right"
+                            placeholder="البلدية"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                          />
+                        </div>
+
+                        <div>
+                          <div>
+                            <div className="">
+                              {/* <p className=" mr-3 my-6 text-lg text-center ">
                           30% تخفيض
                         </p> */}
-                            <p className="sm:flex block text-center mt-12 justify-center">
-                              <span className="text-5xl text-amber-500 font-bold  block sm:inline">
-                                {offer === 1 ? "7500" : "13900"} DA
-                              </span>
+                              <p className="sm:flex block text-center mt-12 justify-center">
+                                <span className="text-5xl text-amber-500 font-bold  block sm:inline">
+                                  {offer === 1 ? "7500" : "13900"} DA
+                                </span>
 
-                              <span className="  text-lg line-through block sm:inline">
-                                {offer === 1 ? "11500" : "23000"} DA
-                              </span>
-                            </p>
+                                <span className="  text-lg line-through block sm:inline">
+                                  {offer === 1 ? "11500" : "23000"} DA
+                                </span>
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div>
-                        {formErr && (
-                          <p className="text-center  bg-amber-600/60 py-3 rounded-lg mt-4">
-                            الرجاء إدخال جميع المعلومات
-                          </p>
-                        )}
-                      </div>
-                      <div className="mt-4">
-                        <button
-                          // disabled={!fullName || !number || !province}
-                          onClick={handleAddLead}
-                          disabled={isLoading}
-                          type="submit"
-                          className="bg-amber-600 hover:bg-amber-500 text-white duration-150 ease-in-out  button-bounce text-2xl rounded-lg w-full p-4 text-center  font-bold "
-                        >
-                          {isLoading && <span className="loader"></span>}أطلب
-                          الآن
-                        </button>
-                      </div>
-                      <div className="w-full block md:hidden">
-                        {fullName === "" ||
-                        number === null ||
-                        address === "" ||
-                        province === "" ? (
-                          <a
-                            href="#form"
-                            className="bg-amber-500  fixed bottom-3 left-3 right-3 text-white text-xl rounded-lg  p-3 text-center  font-bold hover:bg-amber-400"
-                          >
-                            أطلب الآن
-                          </a>
-                        ) : (
+                        <div>
+                          {formErr && (
+                            <p className="text-center  bg-amber-600/60 py-3 rounded-lg mt-4">
+                              الرجاء إدخال جميع المعلومات
+                            </p>
+                          )}
+                        </div>
+                        <div className="mt-4">
                           <button
+                            // disabled={!fullName || !number || !province}
                             onClick={handleAddLead}
                             disabled={isLoading}
                             type="submit"
-                            className="bg-amber-500 z-20  fixed bottom-3 text-white left-3 right-3 text-xl rounded-lg  p-3 text-center  font-bold hover:bg-amber-400"
+                            className="bg-amber-600 hover:bg-amber-500 text-white duration-150 ease-in-out  button-bounce text-2xl rounded-lg w-full p-4 text-center  font-bold "
                           >
                             {isLoading && <span className="loader"></span>}أطلب
                             الآن
                           </button>
-                        )}
-                      </div>
-                    </form>
-                  </>
-                )}
+                        </div>
+                        <div className="w-full block md:hidden">
+                          {fullName === "" ||
+                          number === null ||
+                          address === "" ||
+                          province === "" ? (
+                            <a
+                              href="#form"
+                              className="bg-amber-500  fixed bottom-3 left-3 right-3 text-white text-xl rounded-lg  p-3 text-center  font-bold hover:bg-amber-400"
+                            >
+                              أطلب الآن
+                            </a>
+                          ) : (
+                            <button
+                              onClick={handleAddLead}
+                              disabled={isLoading}
+                              type="submit"
+                              className="bg-amber-500 z-20  fixed bottom-3 text-white left-3 right-3 text-xl rounded-lg  p-3 text-center  font-bold hover:bg-amber-400"
+                            >
+                              {isLoading && <span className="loader"></span>}
+                              أطلب الآن
+                            </button>
+                          )}
+                        </div>
+                      </form>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
 
