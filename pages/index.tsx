@@ -686,7 +686,7 @@ export default function Home() {
                                     : "border-gray-200"
                                 }`}
                               >
-                                1 Ensemble (7500 DA)
+                                1 Ensemble (6900 DA)
                               </div>
                               <div
                                 onClick={() => setOffer(2)}
@@ -785,11 +785,11 @@ export default function Home() {
                         </p> */}
                               <p className="sm:flex block text-center mt-12 justify-center">
                                 <span className="text-5xl text-amber-500 font-bold  block sm:inline">
-                                  {offer === 1 ? "7500" : "13900"} DA
+                                  {offer === 1 ? "6900" : "13900"} DA
                                 </span>
 
                                 <span className="  text-lg line-through block sm:inline">
-                                  {offer === 1 ? "11500" : "23000"} DA
+                                  {offer === 1 ? "10800" : "21600"} DA
                                 </span>
                               </p>
                             </div>
