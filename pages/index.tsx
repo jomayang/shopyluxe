@@ -89,10 +89,10 @@ export default function Home() {
     const handleBeforeUnload = async (event: any) => {
       try {
         if (!isSubmitted && number !== null) {
-          // const agents_dict = [17, 23];
-          // const agentId =
-          //   agents_dict[Math.floor(Math.random() * agents_dict.length)];
-          const agentId = 12;
+          const agents_dict = [17, 23];
+          const agentId =
+            agents_dict[Math.floor(Math.random() * agents_dict.length)];
+          // const agentId = 12;
           let productModel;
           let productColor;
           switch (model) {
