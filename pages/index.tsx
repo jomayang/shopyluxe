@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { sha256 } from "js-sha256";
 import bg from "../public/background.jpg";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -12,6 +13,7 @@ import supabase from "../supabase-config";
 
 import Countdown from "react-countdown/dist/index";
 import { setCookie, getCookie } from "cookies-next";
+import { fbq } from "react-facebook-pixel";
 
 export default function Home() {
   const [fullName, setFullName] = useState("");
@@ -30,6 +32,8 @@ export default function Home() {
   const [size, setSize] = useState("l");
   const [model, setModel] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [eventId, setEventId] = useState("");
+  const [testEventCode, setTestEventCode] = useState("");
 
   useEffect(() => {
     const isSubmittedTemp = getCookie("is-submitted") ? true : false;
@@ -89,10 +93,10 @@ export default function Home() {
     const handleBeforeUnload = async (event: any) => {
       try {
         if (!isSubmitted && number !== null) {
-          const agents_dict = [17, 23];
-          const agentId =
-            agents_dict[Math.floor(Math.random() * agents_dict.length)];
-          // const agentId = 12;
+          // const agents_dict = [17, 23];
+          // const agentId =
+          //   agents_dict[Math.floor(Math.random() * agents_dict.length)];
+          const agentId = 12;
           let productModel;
           let productColor;
           switch (model) {
@@ -187,10 +191,10 @@ export default function Home() {
         } else {
           agentId = 23;
         }*/
-        // const agents_dict = [17, 23];
-        // const agentId =
-        //   agents_dict[Math.floor(Math.random() * agents_dict.length)];
-        const agentId = 12;
+        const agents_dict = [17, 23];
+        const agentId =
+          agents_dict[Math.floor(Math.random() * agents_dict.length)];
+        //const agentId = 12;
         let productModel;
         let productColor;
         switch (model) {
@@ -234,6 +238,33 @@ export default function Home() {
           setFormErr(false);
         } else {
           setCookie("is-submitted", true, { maxAge: 60 * 60 * 3 });
+          fetch(
+            `https://graph.facebook.com/v18.0/${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}/events?access_token=${process.env.NEXT_PUBLIC_FBACCESSKEY}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                data: [
+                  {
+                    event_name: "Purchase",
+                    event_time: Math.floor(Date.now() / 1000),
+                    event_id: eventId,
+                    action_source: "website",
+                    user_data: {
+                      fn: [[sha256(fullName)]],
+                      ph: [[sha256(number)]],
+                    },
+                  },
+                ],
+                test_event_code: testEventCode,
+              }),
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error("Error:", error));
           setIsSubmitted(true);
           router.push("/thankyou");
         }
@@ -696,7 +727,7 @@ export default function Home() {
                                     : "border-gray-200"
                                 }`}
                               >
-                                2 Ensembles (13900 DA)
+                                2 Ensembles (13000 DA)
                               </div>
                             </div>
                           </div>
@@ -785,7 +816,7 @@ export default function Home() {
                         </p> */}
                               <p className="sm:flex block text-center mt-12 justify-center">
                                 <span className="text-5xl text-amber-500 font-bold  block sm:inline">
-                                  {offer === 1 ? "6900" : "13900"} DA
+                                  {offer === 1 ? "6900" : "13000"} DA
                                 </span>
 
                                 <span className="  text-lg line-through block sm:inline">
