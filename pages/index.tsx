@@ -28,7 +28,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [agents, setAgents] = useState<any>([]);
   const [agentsCount, setAgentsCount] = useState(0);
-  const [previewImage, setPreviewImage] = useState("noir-03.jpg");
+  const [previewImage, setPreviewImage] = useState("n01.jpg");
   const [size, setSize] = useState("l");
   const [model, setModel] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -238,33 +238,38 @@ export default function Home() {
           setFormErr(false);
         } else {
           setCookie("is-submitted", true, { maxAge: 60 * 60 * 3 });
-          fetch(
-            `https://graph.facebook.com/v18.0/${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}/events?access_token=${process.env.NEXT_PUBLIC_FBACCESSKEY}`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                data: [
-                  {
-                    event_name: "Purchase",
-                    event_time: Math.floor(Date.now() / 1000),
-                    event_id: eventId,
-                    action_source: "website",
-                    user_data: {
-                      fn: [[sha256(fullName)]],
-                      ph: [[sha256(number)]],
-                    },
-                  },
-                ],
-                test_event_code: testEventCode,
-              }),
-            }
-          )
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error("Error:", error));
+
+          // fetch(
+          //   `https://graph.facebook.com/v18.0/${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}/events?access_token=${process.env.NEXT_PUBLIC_FBACCESSKEY}`,
+          //   {
+          //     method: "POST",
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //     body: JSON.stringify({
+          //       data: [
+          //         {
+          //           event_name: "Purchase",
+          //           event_time: Math.floor(Date.now() / 1000),
+          //           event_id: eventId,
+          //           action_source: "website",
+          //           user_data: {
+          //             fn: [sha256(fullName)],
+          //             ph: [sha256(number)],
+          //           },
+          //           custom_data: {
+          //             currency: "USD",
+          //             value: "12",
+          //           },
+          //         },
+          //       ],
+          //       test_event_code: testEventCode,
+          //     }),
+          //   }
+          // )
+          //   .then((response) => response.json())
+          //   .then((data) => console.log(data))
+          //   .catch((error) => console.error("Error api:", error));
           setIsSubmitted(true);
           router.push("/thankyou");
         }
@@ -307,10 +312,10 @@ export default function Home() {
     //     setPreviewImage("noir-01.jpg");
     //     break;
     //   case 2:
-    //     setPreviewImage("bleu-01.jpg");
+    //     setPreviewImage("bl02.jpg");
     //     break;
     //   case 3:
-    //     setPreviewImage("beige-01.jpg");
+    //     setPreviewImage("b01.jpg");
     //     break;
 
     //   default:
@@ -333,27 +338,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <div className="bg-auto bg-no-repeat bg-center">
-        <header className="bg-white border-b border-gray-300 fixed top-0 h-20 w-full z-20">
+        <header className="bg-[#151515] border-b border-gray-600 fixed top-0 h-20 w-full z-20">
           <div className="w-full flex justify-between px-3 py-3">
             <div className="py-3">
-              <img src="logo.png" className="h-8" alt="" />
+              <img src="logo-dark.png" className="h-8" alt="" />
             </div>
             <div className=" mt-3">
               <a
                 href="#form"
-                className=" bg-amber-500 hover:bg-amber-400 text-white duration-150 ease-in-out  px-6 py-3 rounded-lg font-bold"
+                className=" bg-amber-500 hover:bg-amber-400 text-white duration-150 ease-in-out text-white  px-6 py-3 rounded-lg font-bold"
               >
                 أطلب الآن
               </a>
             </div>
           </div>
         </header>
-        <main className="w-full  mt-20 px-6">
+        <main className="w-full  mt-20 px-6 bg-[#151515]">
           <div className="w-full pt-4 pb-4 text-center  z-10 mt-4">
-            <h1 className="text-5xl mb-2 ">
+            <h1 className="text-5xl mb-2 text-white">
               ابدأ رحلة الأناقة الشخصية مع أحدث موديلات الربيع
             </h1>
-            <p className="text-2xl ">
+            <p className="text-2xl text-white">
               {" "}
               تصاميم فريدة بألوان متنوعة، مثالية لكل المناسبات
             </p>
@@ -371,38 +376,23 @@ export default function Home() {
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
                 <div className="grid gap-2 grid-cols-6 mt-2">
-                  <button onClick={() => setPreviewImage("noir-03.jpg")}>
-                    <Image src="/noir-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("n01.jpg")}>
+                    <Image src="/n01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("tabac-03.jpg")}>
-                    <Image
-                      src="/tabac-03.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("t01.jpg")}>
+                    <Image src="/t01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
-                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("bl01.jpg")}>
+                    <Image src="/bl01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
-                    <Image
-                      src="/beige-01.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("b01.jpg")}>
+                    <Image src="/b01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-05.jpg")}>
-                    <Image src="/noir-05.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("n02.jpg")}>
+                    <Image src="/n02.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("tabac-01.jpg")}>
-                    <Image
-                      src="/tabac-01.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("t03.jpg")}>
+                    <Image src="/t03.jpg" width={128} height={160} alt="" />
                   </button>
                 </div>
               </div>
@@ -410,29 +400,14 @@ export default function Home() {
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-04.jpg"
+                  src="/n03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-06.jpg"
-                  className="my-3"
-                  alt=""
-                />
-
-                <Image
-                  height={510}
-                  width={382}
-                  src="/tabac-02.jpg"
-                  className="my-3"
-                  alt=""
-                />
-                <Image
-                  height={510}
-                  width={382}
-                  src="/tabac-04.jpg"
+                  src="/n04.jpg"
                   className="my-3"
                   alt=""
                 />
@@ -440,63 +415,71 @@ export default function Home() {
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-01.jpg"
+                  src="/t02.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-04.jpg"
+                  src="/t04.jpg"
+                  className="my-3"
+                  alt=""
+                />
+
+                <Image
+                  height={510}
+                  width={382}
+                  src="/bl02.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/beige-02.jpg"
+                  src="/bl03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/beige-03.jpg"
+                  src="/b03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-02.jpg"
+                  src="/b04.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-01.jpg"
+                  src="/bl05.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-02.jpg"
+                  src="/b02.jpg"
                   className="my-3"
                   alt=""
                 />
               </div>
               <div className=" text-right mt-4">
-                <h1 className="text-xl mb-2 ">:كيفية الطلب </h1>
+                <h1 className="text-xl mb-2 text-white">:كيفية الطلب </h1>
                 <div>
-                  <div className="flex text-right w-full justify-end mt-3  ">
+                  <div className="flex text-right w-full justify-end mt-3 text-white ">
                     <span> أدخل معلوماتك الشخصية في الإستمارة أعلاه</span>
                     <span className=" h-6 w-6 text-black pt-0 pr-0 ml-3 items-center text-center rounded-full bg-white">
                       1
                     </span>
                   </div>
-                  <div className="flex text-right  w-full justify-end mt-3">
+                  <div className="flex text-right  w-full justify-end mt-3 text-white">
                     <span> أنقر على أطلب الان</span>
                     <span className=" h-6 w-6 text-black pt-0 pr-0 ml-3 items-center text-center rounded-full bg-white">
                       2
@@ -505,8 +488,8 @@ export default function Home() {
                 </div>
               </div>
               <div className=" text-right mt-8 mb-8">
-                <h1 className="text-xl mb-2  ">:كيفية الإستلام </h1>
-                <p className=" ">
+                <h1 className="text-xl mb-2  text-white">:كيفية الإستلام </h1>
+                <p className="text-white ">
                   طريقة بسيط جدا بعد أن تطلب المنتج سيتصل بك أحد موظفي الشركة
                   ليؤكد معك الطلب ، وسنرسل لك المنتج والدفع عند الاستلام
                 </p>
@@ -518,38 +501,23 @@ export default function Home() {
                   <img src={previewImage} alt="" className="w-full" />
                 </div>
                 <div className="grid gap-2 grid-cols-6 mt-2">
-                  <button onClick={() => setPreviewImage("noir-03.jpg")}>
-                    <Image src="/noir-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("n01.jpg")}>
+                    <Image src="/n01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("tabac-03.jpg")}>
-                    <Image
-                      src="/tabac-03.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("t01.jpg")}>
+                    <Image src="/t01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("bleu-03.jpg")}>
-                    <Image src="/bleu-03.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("bl01.jpg")}>
+                    <Image src="/bl01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("beige-01.jpg")}>
-                    <Image
-                      src="/beige-01.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("b01.jpg")}>
+                    <Image src="/b01.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("noir-05.jpg")}>
-                    <Image src="/noir-05.jpg" width={128} height={160} alt="" />
+                  <button onClick={() => setPreviewImage("n02.jpg")}>
+                    <Image src="/n02.jpg" width={128} height={160} alt="" />
                   </button>
-                  <button onClick={() => setPreviewImage("tabac-01.jpg")}>
-                    <Image
-                      src="/tabac-01.jpg"
-                      width={128}
-                      height={160}
-                      alt=""
-                    />
+                  <button onClick={() => setPreviewImage("t03.jpg")}>
+                    <Image src="/t03.jpg" width={128} height={160} alt="" />
                   </button>
                 </div>
               </div>
@@ -558,17 +526,17 @@ export default function Home() {
             <div className="z-10">
               <div className="bg-gradient-to-tr from-lime-500 via-orange-500  to-amber-500 p-1 rounded-2xl">
                 <div
-                  className="bg-[#f5f5f5] rounded-2xl w-full  py-4 px-6 "
+                  className="bg-[#282828] rounded-2xl w-full  py-4 px-6 "
                   id="form"
                 >
                   {isSubmitted ? (
-                    <p className=" text-center">
+                    <p className=" text-center text-white">
                       شكرا جزيلا على ثقتكم سيتم الإتصال بكم في غضون 24 ساعة
                       لتأكيد طلبكم فالرجاء إبقاء الهاتف مفتوح
                     </p>
                   ) : (
                     <>
-                      <h1 className="text-3xl  font-bold text-center ">
+                      <h1 className="text-3xl  font-bold text-center text-white">
                         <span className="text-amber-500">(35% تخفيض)</span>
                         <br /> أطلب الآن واستفد من العرض{" "}
                       </h1>
@@ -582,7 +550,7 @@ export default function Home() {
                         />
                       </div>
                       <form action="#" method="post">
-                        <div className="p-4 border border-amber-600 rounded-lg mt-6">
+                        <div className="p-4 border border-amber-600 rounded-lg mt-6 text-white">
                           <h3 className="text-lg mt-4 text-center ">
                             قم بإختيار اللون و المقاس{" "}
                           </h3>
@@ -596,7 +564,7 @@ export default function Home() {
                                 className={`flex cursor-pointer p-1 border-2 hover:border-amber-500 w-16 h-16 rounded-lg ${
                                   model === 1
                                     ? "border-amber-700"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 <Image
@@ -612,7 +580,7 @@ export default function Home() {
                                 className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
                                   model === 2
                                     ? "border-amber-700"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 <Image
@@ -628,7 +596,7 @@ export default function Home() {
                                 className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
                                   model === 3
                                     ? "border-amber-700"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 <Image
@@ -644,7 +612,7 @@ export default function Home() {
                                 className={`flex cursor-pointer  p-1 border-2  hover:border-amber-500 w-16 h-16 rounded-lg ${
                                   model === 4
                                     ? "border-amber-700"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 <Image
@@ -667,7 +635,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   size === "m"
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 M
@@ -677,7 +645,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   size === "l"
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 L
@@ -687,7 +655,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   size === "xl"
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 XL
@@ -697,7 +665,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   size === "xxl"
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 XXL
@@ -714,7 +682,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   offer === 1
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 1 Ensemble (6900 DA)
@@ -724,7 +692,7 @@ export default function Home() {
                                 className={`flex p-1 border-2  cursor-pointer  hover:border-amber-500  text-center justify-center rounded-lg ${
                                   offer === 2
                                     ? "border-amber-500"
-                                    : "border-gray-200"
+                                    : "border-gray-700"
                                 }`}
                               >
                                 2 Ensembles (13000 DA)
@@ -733,10 +701,10 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <h3 className="text-lg  text-center mt-4 ">
+                        <h3 className="text-lg  text-center mt-4 text-white">
                           الرجاء إدخال معلوماتك الشخصية و سوف نتصل بك للتأكيد{" "}
                         </h3>
-                        <div>
+                        <div className="text-white">
                           <label className="label w-full text-right block mt-3">
                             <span className="label-text  right-0 ">
                               الإسم و اللقب
@@ -757,7 +725,7 @@ export default function Home() {
                             </p>
                           )}
                         </div>
-                        <div>
+                        <div className="text-white">
                           <label className="label w-full text-right block mt-3">
                             <span className="label-text  ">رقم الهاتف</span>
                           </label>
@@ -776,7 +744,7 @@ export default function Home() {
                             </p>
                           )}
                         </div>
-                        <div>
+                        <div className="text-white">
                           <label className="label w-full text-right block mt-3">
                             <span className="label-text  ">الولاية</span>
                           </label>
@@ -795,7 +763,7 @@ export default function Home() {
                             </p>
                           )}
                         </div>
-                        <div>
+                        <div className="text-white">
                           <label className="label w-full text-right block mt-3">
                             <span className="label-text  ">البلدية</span>
                           </label>
@@ -819,7 +787,7 @@ export default function Home() {
                                   {offer === 1 ? "6900" : "13000"} DA
                                 </span>
 
-                                <span className="  text-lg line-through block sm:inline">
+                                <span className=" text-white text-lg line-through block sm:inline">
                                   {offer === 1 ? "10800" : "21600"} DA
                                 </span>
                               </p>
@@ -891,29 +859,14 @@ export default function Home() {
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-04.jpg"
+                  src="/n03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-06.jpg"
-                  className="my-3"
-                  alt=""
-                />
-
-                <Image
-                  height={510}
-                  width={382}
-                  src="/tabac-02.jpg"
-                  className="my-3"
-                  alt=""
-                />
-                <Image
-                  height={510}
-                  width={382}
-                  src="/tabac-04.jpg"
+                  src="/n04.jpg"
                   className="my-3"
                   alt=""
                 />
@@ -921,54 +874,62 @@ export default function Home() {
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-01.jpg"
+                  src="/t02.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-04.jpg"
+                  src="/t04.jpg"
+                  className="my-3"
+                  alt=""
+                />
+
+                <Image
+                  height={510}
+                  width={382}
+                  src="/bl02.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/beige-02.jpg"
+                  src="/bl03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/beige-03.jpg"
+                  src="/b03.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/bleu-02.jpg"
+                  src="/b04.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-01.jpg"
+                  src="/bl05.jpg"
                   className="my-3"
                   alt=""
                 />
                 <Image
                   height={510}
                   width={382}
-                  src="/noir-02.jpg"
+                  src="/b02.jpg"
                   className="my-3"
                   alt=""
                 />
               </div>
-              <div className=" text-right mt-4">
+              <div className=" text-right mt-4 text-white">
                 <h1 className="text-xl mb-2 ">:كيفية الطلب </h1>
                 <div>
                   <div className="flex text-right w-full  justify-end mt-3">
@@ -985,7 +946,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className=" text-right mt-8 mb-20">
+              <div className=" text-right mt-8 mb-20 text-white">
                 <h1 className="text-xl mb-2 ">:كيفية الإستلام </h1>
                 <p className="">
                   طريقة بسيط جدا بعد أن تطلب المنتج سيتصل بك أحد موظفي الشركة
